@@ -6,12 +6,12 @@ export interface Item {
   id: string;
   name: string;
   description: string;
-};
+}
 
 export interface AppStore {
   items: Item[];
   selectedItem: Item;
-};
+}
 
 //-------------------------------------------------------------------
 // ITEMS STORE
