@@ -1,13 +1,9 @@
-import {Http, Headers} from 'angular2/http';
 import {Store} from '@ngrx/store';
 import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 
-const BASE_URL = 'http://localhost:3000/items/';
-const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
-
 export interface Item {
-  id: number;
+  id: string;
   name: string;
   description: string;
 };
@@ -21,11 +17,11 @@ export interface AppStore {
 // ITEMS STORE
 //-------------------------------------------------------------------
 export const items = (state: any = [], {type, payload}) => {
-  let index: number;
   switch (type) {
     case 'ADD_ITEMS':
       return payload;
     case 'CREATE_ITEM':
+      console.log('CREATE_ITEM', payload);
       return [...state, payload];
     case 'UPDATE_ITEM':
       return state.map(item => {
@@ -59,15 +55,19 @@ export const selectedItem = (state: any = null, {type, payload}) => {
 export class ItemsService {
   items: Observable<Array<Item>>;
 
-  constructor(private http: Http, private store: Store<AppStore>) {
+  constructor(private store: Store<AppStore>) {
     this.items = store.select('items');
   }
 
   loadItems() {
-    this.http.get(BASE_URL)
-      .map(res => res.json())
-      .map(payload => ({ type: 'ADD_ITEMS', payload }))
-      .subscribe(action => this.store.dispatch(action));
+    // NOTE: Hardcoding data for now... will replace with http calls
+    let initialItems: Item[] = [
+      {'id': '1', 'name': 'Item 1', 'description': 'This is a description'},
+      {'id': '2', 'name': 'Item 2', 'description': 'This is a description'},
+      {'id': '3', 'name': 'Item 3', 'description': 'This is a lovely item'}
+    ];
+
+    this.store.dispatch({ type: 'ADD_ITEMS', payload: initialItems });
   }
 
   saveItem(item: Item) {
@@ -75,19 +75,26 @@ export class ItemsService {
   }
 
   createItem(item: Item) {
-    this.http.post(`${BASE_URL}`, JSON.stringify(item), HEADER)
-      .map(res => res.json())
-      .map(payload => ({ type: 'CREATE_ITEM', payload }))
-      .subscribe(action => this.store.dispatch(action));
+    this.store.dispatch({ type: 'CREATE_ITEM', payload: this.addUUID(item) });
   }
 
   updateItem(item: Item) {
-    this.http.put(`${BASE_URL}${item.id}`, JSON.stringify(item), HEADER)
-      .subscribe(action => this.store.dispatch({ type: 'UPDATE_ITEM', payload: item }));
+    this.store.dispatch({ type: 'UPDATE_ITEM', payload: item });
   }
 
   deleteItem(item: Item) {
-    this.http.delete(`${BASE_URL}${item.id}`)
-      .subscribe(action => this.store.dispatch({ type: 'DELETE_ITEM', payload: item }));
+    this.store.dispatch({ type: 'DELETE_ITEM', payload: item });
   }
+
+  // NOTE: Utility functions to simulate server generated IDs
+  private addUUID(item: Item): Item {
+    return Object.assign({}, item, {id: this.generateUUID()}); // Avoiding state mutation FTW!
+  }
+
+  private generateUUID(): string {
+    return ('' + 1e7 + -1e3 + -4e3 + -8e3 + -1e11)
+      .replace(/1|0/g, function() {
+        return (0 | Math.random() * 16).toString(16);
+      });
+  };
 }
