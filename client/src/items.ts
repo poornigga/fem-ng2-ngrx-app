@@ -21,7 +21,6 @@ export const items = (state: any = [], {type, payload}) => {
     case 'ADD_ITEMS':
       return payload;
     case 'CREATE_ITEM':
-      console.log('CREATE_ITEM', payload);
       return [...state, payload];
     case 'UPDATE_ITEM':
       return state.map(item => {
@@ -60,7 +59,7 @@ export class ItemsService {
   }
 
   loadItems() {
-    // NOTE: Hardcoding data for now... will replace with http calls
+    // NOTE: Hard coding data for now... will replace with http calls
     let initialItems: Item[] = [
       {'id': '1', 'name': 'Item 1', 'description': 'This is a description'},
       {'id': '2', 'name': 'Item 2', 'description': 'This is a description'},

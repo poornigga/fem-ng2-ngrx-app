@@ -97,7 +97,7 @@ class ItemDetail {
   <div class="mdl-cell mdl-cell--6-col">
     <item-detail
       (saved)="saveItem($event)" (cancelled)="resetItem($event)"
-      [item]="selectedItem | async">Select an Item</item-detail>
+      [item]="selectedItem | async"></item-detail>
   </div>
   `,
   directives: [ItemList, ItemDetail],
