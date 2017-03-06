@@ -14,8 +14,8 @@ There are two main parts to this application. The first is the server which we a
 To get started, run the commands below.
 
 ```
-$ git clone https://github.com/onehungrymind/fem-ng2-ngrx-app.git
-$ cd fem-ng2-ngrx-app
+$ git clone https://github.com/poornigga/ng2-ngrx-template myApp
+$ cd myApp
 $ npm install
 $ typings install
 $ npm start

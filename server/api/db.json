@@ -2,40 +2,35 @@
   "items": [
     {
       "id": 1,
-      "name": "Item 1",
-      "description": "This is a description"
+      "name": "王大狗",
+      "description": "精神病医生"
     },
     {
       "id": 2,
-      "name": "Item 2",
-      "description": "This is a description"
+      "name": "李铁锤",
+      "description": "医生"
     },
     {
       "id": 3,
-      "name": "Item 3",
-      "description": "This is a lovely item"
-    },
-    {
-      "name": "hghg",
-      "description": "gfhg",
-      "id": 4
+      "name": "李欢欢",
+      "description": "营养专家"
     }
   ],
   "widgets": [
     {
       "id": 1,
-      "name": "Widget 1",
-      "price": 100
+      "name": "张三",
+      "price": 60
     },
     {
       "id": 2,
-      "name": "Widget 2",
-      "price": 200
+      "name": "王欢欢",
+      "price": 80
     },
     {
       "id": 3,
-      "name": "Widget 3",
-      "price": 300
+      "name": "尼古拉斯赵四",
+      "price": 110
     }
   ]
 }

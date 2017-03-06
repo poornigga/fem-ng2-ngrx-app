@@ -7,12 +7,12 @@ import {Item} from '../common/models/item.model';
   <div class="fem-card mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text" *ngIf="selectedItem.id">Editing {{originalName}}</h2>
-      <h2 class="mdl-card__title-text" *ngIf="!selectedItem.id">Create New Item</h2>
+      <h2 class="mdl-card__title-text" *ngIf="!selectedItem.id">Create New Doctor</h2>
     </div>
     <div class="mdl-card__supporting-text">
       <form novalidate>
           <div class="mdl-textfield mdl-js-textfield">
-            <label>Item Name</label>
+            <label>Doctor Name</label>
             <input [(ngModel)]="selectedItem.name"
               name="name"
               placeholder="Enter a name"
@@ -20,7 +20,7 @@ import {Item} from '../common/models/item.model';
           </div>
 
           <div class="mdl-textfield mdl-js-textfield">
-            <label>Item Description</label>
+            <label>Doctor Description</label>
             <input [(ngModel)]="selectedItem.description"
               name="description"
               placeholder="Enter a description"

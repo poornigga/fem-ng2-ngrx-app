@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Widget} from './../common/models/widget.model.ts';
+import {Widget} from './../common/models/widget.model';
 
 @Component({
     selector: 'widgets-list',
@@ -11,7 +11,7 @@ import {Widget} from './../common/models/widget.model.ts';
         <h2 class="mdl-card__title-text">{{widget.name}}</h2>
       </div>
       <div class="mdl-card__supporting-text">
-        {{widget.price}}
+        {{widget.price}} kg
       </div>
     </div>
     `

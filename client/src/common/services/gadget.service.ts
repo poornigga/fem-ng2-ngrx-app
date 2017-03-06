@@ -3,11 +3,11 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
 import {AppStore} from '../models/appstore.model';
-import {Gadget} from "../models/gadget.model.ts";
+import {Gadget} from "../models/gadget.model";
 import {Item} from "../models/item.model";
 import {Widget} from "../models/widget.model";
 
-import * as Rx from 'rxjs/Rx'; //
+import * as Rx from 'rxjs/Rx';
 
 @Injectable()
 export class GadgetService {

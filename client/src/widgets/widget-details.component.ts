@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {Widget} from "./../common/models/widget.model.ts";
+import {Widget} from "./../common/models/widget.model";
 
 @Component({
     selector: 'widget-details',
@@ -8,13 +8,13 @@ import {Widget} from "./../common/models/widget.model.ts";
   <div class="fem-card mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text" *ngIf="selectedWidget.id">Editing {{originalName}}</h2>
-      <h2 class="mdl-card__title-text" *ngIf="!selectedWidget.id">Create New Widget</h2>
+      <h2 class="mdl-card__title-text" *ngIf="!selectedWidget.id">Create New Patient</h2>
     </div>
     <div class="mdl-card__supporting-text">
       <form [formGroup]="widgetForm"
           (submit)="saved.emit(selectedWidget)" novalidate>
           <div class="mdl-textfield mdl-js-textfield">
-            <label>Widget Name</label>
+            <label>Patient Name</label>
             <input formControlName="widgetName"
               [(ngModel)]="selectedWidget.name"
               name="name"
@@ -23,11 +23,11 @@ import {Widget} from "./../common/models/widget.model.ts";
           </div>
 
           <div class="mdl-textfield mdl-js-textfield">
-            <label>Widget Price</label>
+            <label>Patient Weight (KG)</label>
             <input formControlName="widgetPrice"
               [(ngModel)]="selectedWidget.price"
               name="price"
-              placeholder="Enter a price"
+              placeholder="Enter Weight"
               class="mdl-textfield__input" type="text">
           </div>
           <button type="submit" [disabled]="!widgetForm.valid" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">Save</button>

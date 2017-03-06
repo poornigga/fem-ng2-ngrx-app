@@ -16,8 +16,14 @@ import {HttpModule} from '@angular/http';
 import {App} from './src/app';
 import {Items} from './src/items/items.component';
 import {Widgets} from './src/widgets/widgets.component';
-import {GadgetService} from "./src/common/services/gadget.service.ts";
+import {GadgetService} from "./src/common/services/gadget.service";
 import {routes} from './routes';
+
+// new version of angular
+import {ItemsList} from './src/items/items-list.component';
+import {ItemDetail} from './src/items/item-detail.component';
+import {WidgetsList} from './src/widgets/widgets-list.component';
+import {WidgetDetails} from './src/widgets/widget-details.component';
 
 @NgModule({
   imports: [
@@ -35,7 +41,7 @@ import {routes} from './routes';
     }),
     StoreLogMonitorModule
   ],
-  declarations: [App, Items, Widgets],
+  declarations: [App, Items, Widgets, ItemsList, ItemDetail, WidgetsList, WidgetDetails],
   providers: [GadgetService],
   bootstrap: [App]
 })
